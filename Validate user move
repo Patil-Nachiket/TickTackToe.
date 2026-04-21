@@ -1,0 +1,48 @@
+public class TicTacToe {
+
+    // Validate the move
+    static boolean isValidMove(char[][] board, int row, int col) {
+
+        // Boundary Check: row and column must be between 0 and 2
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            System.out.println("Invalid move! Slot out of bounds.");
+            return false;
+        }
+
+        // Empty Cell Check: cell must contain '-'
+        if (board[row][col] != '-') {
+            System.out.println("Invalid move! Cell already occupied.");
+            return false;
+        }
+
+        return true; // Move is valid
+    }
+
+    public static void main(String[] args) {
+
+        // Initialize board
+        char[][] board = {
+            {'-', 'X', '-'},
+            {'-', '-', '-'},
+            {'-', '-', 'O'}
+        };
+
+        System.out.println("=== Move Validation Tests ===\n");
+
+        // Test 1: Valid empty cell
+        System.out.print("Test 1 - Slot 1 (Row 0, Col 0): ");
+        System.out.println(isValidMove(board, 0, 0) ? "Move ACCEPTED" : "Move REJECTED");
+
+        // Test 2: Already occupied cell
+        System.out.print("Test 2 - Slot 2 (Row 0, Col 1): ");
+        System.out.println(isValidMove(board, 0, 1) ? "Move ACCEPTED" : "Move REJECTED");
+
+        // Test 3: Out of bounds
+        System.out.print("Test 3 - Row 3, Col 3 (out of bounds): ");
+        System.out.println(isValidMove(board, 3, 3) ? "Move ACCEPTED" : "Move REJECTED");
+
+        // Test 4: Another valid cell
+        System.out.print("Test 4 - Slot 5 (Row 1, Col 1): ");
+        System.out.println(isValidMove(board, 1, 1) ? "Move ACCEPTED" : "Move REJECTED");
+    }
+}
